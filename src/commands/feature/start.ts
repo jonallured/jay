@@ -1,19 +1,10 @@
-import { Command, flags } from "@oclif/command"
+import { Args, Command, Flags } from "@oclif/core"
 import { Jay } from "../../shared/Jay"
 import {
   computeBranchName,
-  computeGithubTeamNames,
   computeJiraLinks,
   computePrTitle,
 } from "../../helpers/feature"
-
-const artsyTeams = [
-  "artsy/collector-experience",
-  "artsy/fx-devs",
-  "artsy/grow-devs",
-  "artsy/purchase-devs",
-  "artsy/px-devs",
-]
 
 const featureTypes = [
   "chore",
@@ -25,58 +16,42 @@ const featureTypes = [
   "test",
 ]
 
-const nameArg = {
-  description: "Name of the feature being worked.",
-  name: "featureName",
-  required: true,
-}
-
-const typeArg = {
-  default: "feat",
-  description: "Type of the feature being worked.",
-  name: "featureType",
-  options: featureTypes,
-  required: true,
-}
-
-const jiraFlag = flags.string({
-  char: "j",
-  default: [],
-  description: "Jira ticket number like this: GRO-4.",
-  multiple: true,
-  required: false,
-})
-
-const teamFlag = flags.string({
-  char: "t",
-  default: [],
-  description: "GitHub team to CC on PR.",
-  multiple: true,
-  options: artsyTeams,
-  required: false,
-})
-
 export default class Start extends Command {
   static description = "Start a feature branch."
 
-  static args = [nameArg, typeArg]
+  static args = {
+    featureName: Args.string({
+      description: "Name of the feature being worked.",
+      required: true,
+    }),
+    featureType: Args.string({
+      default: "feat",
+      description: "Type of the feature being worked.",
+      options: featureTypes,
+      required: true,
+    }),
+  }
 
   static flags = {
-    jira: jiraFlag,
-    team: teamFlag,
+    jira: Flags.string({
+      char: "j",
+      default: [],
+      description: "Jira ticket number like this: DIA-4.",
+      multiple: true,
+      required: false,
+    }),
   }
 
   async run(): Promise<void> {
-    const { args, flags } = this.parse(Start)
+    const { args, flags } = await this.parse(Start)
 
     const { featureName, featureType } = args
-    const { jira: jiraTickets, team: githubTeams } = flags
+    const { jira: jiraTickets } = flags
 
     const branchName = computeBranchName(featureName, featureType)
     const prTitle = computePrTitle(featureName, featureType, jiraTickets)
 
     const jiraLinks = computeJiraLinks(jiraTickets)
-    const githubTeamNames = computeGithubTeamNames(githubTeams)
 
     const newBranchCommand = `git checkout -b ${branchName}`
     Jay.utils.exec(newBranchCommand)
@@ -85,7 +60,6 @@ export default class Start extends Command {
     Jay.utils.exec(pushCommand)
 
     const branchInfo = {
-      githubTeamNames,
       jiraLinks,
       prTitle,
     }

@@ -1,5 +1,5 @@
 import * as keysHelpers from "../src/helpers/keys"
-import dirTree from "directory-tree"
+import dirTree = require("directory-tree")
 
 export type KeysHelpersName = keyof typeof keysHelpers
 
@@ -32,7 +32,7 @@ const cleanTree = (tree: Tree): Tree => {
 }
 
 export const captureStructure = (path: string): Tree => {
-  const tree = dirTree(path)
+  const tree = dirTree(path, { attributes: ["size", "type"] })
   const cleanedTree = cleanTree(tree)
   return cleanedTree
 }

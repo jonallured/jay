@@ -1,4 +1,4 @@
-import { Command } from "@oclif/command"
+import { Command } from "@oclif/core"
 import { Jay } from "../shared/Jay"
 
 export default class Done extends Command {

@@ -1,4 +1,4 @@
-import { Command } from "@oclif/command"
+import { Command } from "@oclif/core"
 import { Jay } from "../../shared/Jay"
 import { updateKeys, updateSafelist } from "../../helpers/keys"
 
@@ -8,7 +8,8 @@ export default class Remove extends Command {
   static strict = false
 
   async run(): Promise<void> {
-    const removeList = this.parse(Remove).argv
+    const { argv } = await this.parse(Remove)
+    const removeList = argv as string[]
 
     if (removeList.length > 0) {
       updateSafelist(Jay.config, [], removeList)
