@@ -1,19 +1,19 @@
-import { Command } from "@oclif/command"
+import { Args, Command } from "@oclif/core"
 import { Jay } from "../../shared/Jay"
-
-const branchNameArg = {
-  description: "Name of branch to be nuked.",
-  name: "branchName",
-  required: true,
-}
 
 export default class Nuke extends Command {
   static description = "Nuke a feature branch."
 
-  static args = [branchNameArg]
+  static args = {
+    branchName: Args.string({
+      description: "Name of branch to be nuked.",
+      required: true,
+    }),
+  }
 
   async run(): Promise<void> {
-    const { branchName } = this.parse(Nuke).args
+    const { args } = await this.parse(Nuke)
+    const { branchName } = args
 
     const localCommand = `git branch -D ${branchName} || echo nope`
     Jay.utils.exec(localCommand)

@@ -8,7 +8,6 @@ import {
   writeFileSync,
 } from "fs"
 import { homedir, hostname } from "os"
-import fetch from "node-fetch"
 
 const exec = (command: string): string => {
   const result = execSync(command, { encoding: "utf-8" })

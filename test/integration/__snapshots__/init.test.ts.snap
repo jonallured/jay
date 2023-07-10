@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`initializing with an already setup keys structure does nothing 1`] = `
-Object {
-  "children": Array [
-    Object {
-      "children": Array [
-        Object {
+{
+  "children": [
+    {
+      "children": [
+        {
           "name": "authorized.keys",
           "size": 35,
           "type": "file",
         },
-        Object {
+        {
           "name": "safelist",
           "size": 11,
           "type": "file",
         },
-        Object {
+        {
           "name": "unmanaged.keys",
           "size": 16,
           "type": "file",
@@ -33,26 +33,26 @@ Object {
 `;
 
 exports[`initializing with an empty existing authorized keys file sets up an initial keys structure 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": "authorized_keys",
       "size": 0,
       "type": "file",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "authorized.keys",
           "size": 0,
           "type": "file",
         },
-        Object {
+        {
           "name": "safelist",
           "size": 0,
           "type": "file",
         },
-        Object {
+        {
           "name": "unmanaged.keys",
           "size": 0,
           "type": "file",
@@ -70,31 +70,31 @@ Object {
 `;
 
 exports[`initializing with no existing authorized keys file sets up an initial keys structure 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": ".keep",
       "size": 0,
       "type": "file",
     },
-    Object {
+    {
       "name": "authorized_keys",
       "size": 0,
       "type": "file",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "authorized.keys",
           "size": 0,
           "type": "file",
         },
-        Object {
+        {
           "name": "safelist",
           "size": 0,
           "type": "file",
         },
-        Object {
+        {
           "name": "unmanaged.keys",
           "size": 0,
           "type": "file",
@@ -112,26 +112,26 @@ Object {
 `;
 
 exports[`initializing with some existing authorized keys setups up an inital keys structure and honors those existing keys 1`] = `
-Object {
-  "children": Array [
-    Object {
+{
+  "children": [
+    {
       "name": "authorized_keys",
       "size": 0,
       "type": "file",
     },
-    Object {
-      "children": Array [
-        Object {
+    {
+      "children": [
+        {
           "name": "authorized.keys",
           "size": 0,
           "type": "file",
         },
-        Object {
+        {
           "name": "safelist",
           "size": 0,
           "type": "file",
         },
-        Object {
+        {
           "name": "unmanaged.keys",
           "size": 12,
           "type": "file",

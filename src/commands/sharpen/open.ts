@@ -1,15 +1,17 @@
 import { Octokit } from "@octokit/rest"
 import { Endpoints } from "@octokit/types"
-import { Command } from "@oclif/command"
+import { Command } from "@oclif/core"
 import { Jay } from "../../shared/Jay"
 
-type CreateRepoIssueParams = Endpoints["POST /repos/{owner}/{repo}/issues"]["parameters"]
-type CreateRepoIssueResponse = Endpoints["POST /repos/{owner}/{repo}/issues"]["response"]
+type CreateRepoIssueParams =
+  Endpoints["POST /repos/{owner}/{repo}/issues"]["parameters"]
+type CreateRepoIssueResponse =
+  Endpoints["POST /repos/{owner}/{repo}/issues"]["response"]
 
 export const computeIssueParams = (
   weekNumber: string,
   hostname: string,
-  body: string
+  body: string,
 ): CreateRepoIssueParams => {
   const title = `Week ${weekNumber} - ${hostname}`
 

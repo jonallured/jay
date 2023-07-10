@@ -1,4 +1,4 @@
-import { Command } from "@oclif/command"
+import { Command } from "@oclif/core"
 import { Jay } from "../../shared/Jay"
 import { updateKeys, updateSafelist } from "../../helpers/keys"
 
@@ -8,7 +8,8 @@ export default class Add extends Command {
   static strict = false
 
   async run(): Promise<void> {
-    const appendList = this.parse(Add).argv
+    const { argv } = await this.parse(Add)
+    const appendList = argv as string[]
 
     if (appendList.length > 0) {
       updateSafelist(Jay.config, appendList, [])
