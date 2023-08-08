@@ -61,7 +61,7 @@ I've set things up so that CircleCI can release new package versions
 automatically based on pushing tags, so one can cut a new version like so:
 
 ```
-$ ./bin/release 0.0.1 0.0.2
+$ ./bin/release
 ```
 
 That will:
