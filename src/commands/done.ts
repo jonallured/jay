@@ -9,7 +9,7 @@ export default class Done extends Command {
     const basename = Jay.utils.exec(basenameCommand)
 
     const leapCommand = `unicornleap --seconds 1`
-    const sayCommand = `say ${basename} done -v Fiona`
+    const sayCommand = `say ${basename} done -v Daniel`
     Jay.utils.exec(`${sayCommand} & ${leapCommand}`)
   }
 }
