@@ -52,11 +52,6 @@ test_defaults: &test_defaults
         name: Run tests
         command: yarn test
 
-node_16_defaults: &node_16_defaults
-  <<: *global_defaults
-  docker:
-    - image: node:16.20.1
-
 node_18_defaults: &node_18_defaults
   <<: *global_defaults
   docker:
@@ -68,14 +63,6 @@ node_20_defaults: &node_20_defaults
     - image: node:20.3.1
 
 jobs:
-  build-node-16:
-    <<: *node_16_defaults
-    <<: *build_defaults
-
-  test-node-16:
-    <<: *node_16_defaults
-    <<: *test_defaults
-
   build-node-18:
     <<: *node_18_defaults
     <<: *build_defaults
@@ -119,12 +106,8 @@ workflows:
   version: 2
   default:
     jobs:
-      - build-node-16
       - build-node-18
       - build-node-20
-      - test-node-16:
-          requires:
-            - build-node-16
       - test-node-18:
           requires:
             - build-node-18
