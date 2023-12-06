@@ -18,7 +18,7 @@ export const computeJiraLinks = (jiraTickets: string[]): string[] => {
 export const placeholderPrBody =
   "This is a placeholder - please update with an awesome PR description!"
 
-export const teamMention = "/cc @artsy/diamond-devs"
+export const teamMention = "/cc @artsy/amber-devs"
 
 export const computePrBody = (jiraLinks: string[]): string => {
   const tickets = jiraLinks.join("\n")
