@@ -52,7 +52,8 @@ export default class Start extends Command {
     const { args, flags } = await this.parse(Start)
 
     const { featureName, featureType } = args
-    const { buildMe, jira: jiraTickets } = flags
+    const { buildMe, jira } = flags
+    const jiraTickets = jira ?? []
 
     const branchName = computeBranchName(featureName, featureType, buildMe)
     const prTitle = computePrTitle(featureName, featureType, jiraTickets)
