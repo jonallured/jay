@@ -33,6 +33,12 @@ export default class Start extends Command {
   }
 
   static flags = {
+    buildMe: Flags.boolean({
+      char: "b",
+      default: false,
+      description: "Whether to append build-me to branch name.",
+      required: false,
+    }),
     jira: Flags.string({
       char: "j",
       default: [],
@@ -46,9 +52,9 @@ export default class Start extends Command {
     const { args, flags } = await this.parse(Start)
 
     const { featureName, featureType } = args
-    const { jira: jiraTickets } = flags
+    const { buildMe, jira: jiraTickets } = flags
 
-    const branchName = computeBranchName(featureName, featureType)
+    const branchName = computeBranchName(featureName, featureType, buildMe)
     const prTitle = computePrTitle(featureName, featureType, jiraTickets)
 
     const jiraLinks = computeJiraLinks(jiraTickets)

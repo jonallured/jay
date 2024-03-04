@@ -8,11 +8,12 @@ import {
 } from "../../src/helpers/feature"
 
 describe("computeBranchName", () => {
-  it("appends the type to the feature name", () => {
+  it("prepends the type to the feature name", () => {
     const featureName = "Updates"
     const featureType = "chore"
+    const buildMe = false
 
-    const branchName = computeBranchName(featureName, featureType)
+    const branchName = computeBranchName(featureName, featureType, buildMe)
 
     expect(branchName).toEqual("chore-updates")
   })
@@ -20,19 +21,41 @@ describe("computeBranchName", () => {
   it("removes case from feature name and replaces spaces with dashes", () => {
     const featureName = "Update list of Repos"
     const featureType = "chore"
+    const buildMe = false
 
-    const branchName = computeBranchName(featureName, featureType)
+    const branchName = computeBranchName(featureName, featureType, buildMe)
 
     expect(branchName).toEqual("chore-update-list-of-repos")
   })
 
-  it("removes special characters and numbers", () => {
-    const featureName = "This feature rules!1!"
+  it("removes special characters", () => {
+    const featureName = "This feature rules!"
     const featureType = "feat"
+    const buildMe = false
 
-    const branchName = computeBranchName(featureName, featureType)
+    const branchName = computeBranchName(featureName, featureType, buildMe)
 
     expect(branchName).toEqual("feat-this-feature-rules")
+  })
+
+  it("treats numbers as letters", () => {
+    const featureName = "Step 1: Make the change easy"
+    const featureType = "feat"
+    const buildMe = false
+
+    const branchName = computeBranchName(featureName, featureType, buildMe)
+
+    expect(branchName).toEqual("feat-step-1-make-the-change-easy")
+  })
+
+  it("appends build-me", () => {
+    const featureName = "Updates"
+    const featureType = "chore"
+    const buildMe = true
+
+    const branchName = computeBranchName(featureName, featureType, buildMe)
+
+    expect(branchName).toEqual("chore-updates-build-me")
   })
 })
 

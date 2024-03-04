@@ -1,9 +1,13 @@
 export const computeBranchName = (
   featureName: string,
   featureType: string,
+  buildMe: boolean,
 ): string => {
-  const cleanedName = featureName.replace(/[^a-zA-Z ]/g, "")
+  const cleanedName = featureName.replace(/[^a-zA-Z0-9 ]/g, "")
   const parts = [featureType, ...cleanedName.split(" ")]
+  if (buildMe) {
+    parts.push("build-me")
+  }
   const branchName = parts.join("-").toLowerCase()
   return branchName
 }
