@@ -89,22 +89,33 @@ describe("computeJiraLinks", () => {
 })
 
 describe("computePrBody", () => {
-  describe("with no jira links", () => {
+  describe("with a project that should have a body and no jira links", () => {
     it("returns the placeholder pr body with team mention", () => {
+      const projectName = "gravity"
       const jiraLinks: string[] = []
-      const body = computePrBody(jiraLinks)
+      const body = computePrBody(projectName, jiraLinks)
       expect(body).toContain(placeholderPrBody)
       expect(body).toContain(teamMention)
     })
   })
 
+  describe("with a project that should skip the body", () => {
+    it("returns undefined", () => {
+      const projectName = "eigen"
+      const jiraLinks: string[] = []
+      const body = computePrBody(projectName, jiraLinks)
+      expect(body).toBeUndefined()
+    })
+  })
+
   describe("with some jira links", () => {
     it("adds those links to the body", () => {
+      const projectName = "gravity"
       const jiraLinks = [
         "https://artsyproduct.atlassian.net/browse/GRO-4",
         "https://artsyproduct.atlassian.net/browse/CX-7",
       ]
-      const body = computePrBody(jiraLinks)
+      const body = computePrBody(projectName, jiraLinks)
       expect(body).toContain(jiraLinks[0])
       expect(body).toContain(jiraLinks[1])
     })
