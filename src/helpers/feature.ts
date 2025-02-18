@@ -24,7 +24,15 @@ export const placeholderPrBody =
 
 export const teamMention = "/cc @artsy/amber-devs"
 
-export const computePrBody = (jiraLinks: string[]): string => {
+const projectsToSkip = ["eigen", "energy"]
+
+export const computePrBody = (
+  projectName: string,
+  jiraLinks: string[],
+): string | undefined => {
+  const skipBody = projectsToSkip.includes(projectName)
+  if (skipBody) return
+
   const tickets = jiraLinks.join("\n")
   const body = [placeholderPrBody, tickets, teamMention]
     .filter(Boolean)

@@ -20,8 +20,14 @@ export default class OpenPr extends Command {
     const pushCommand = `git push --set-upstream upstream HEAD`
     Jay.utils.exec(pushCommand)
 
-    const prBody = computePrBody(jiraLinks)
-    const prCommand = `gh pr create --title '${prTitle}' --body '${prBody}' --web`
+    let prCommand = `gh pr create --title '${prTitle}' --web`
+
+    const projectName = `basename "$PWD"`
+    const prBody = computePrBody(projectName, jiraLinks)
+    if (prBody) {
+      prCommand = `${prCommand} --body '${prBody}'`
+    }
+
     Jay.utils.exec(prCommand)
   }
 }
