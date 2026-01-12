@@ -1,7 +1,7 @@
 require "thor"
 
 module Jay
-  class CLI < Thor
+  class Cli < Thor
     desc "version", "Print the version"
     def version
       say Jay::VERSION
