@@ -1,6 +1,14 @@
 module Jay
   module Cli
     class RootCommand < Thor
+      desc "done", "Announce when things are done."
+      def done
+        basename = `basename $(pwd)`.chomp
+        leap_command = "unicornleap --seconds 1"
+        say_command = "say #{basename} done -v Daniel"
+        system("#{say_command} & #{leap_command}")
+      end
+
       desc "version", "Print the version"
       def version
         say Jay::VERSION
