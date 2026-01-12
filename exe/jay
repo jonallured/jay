@@ -5,4 +5,4 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require "jay"
 
-Jay::Cli.start(ARGV)
+Jay::Cli::RootCommand.start(ARGV)
