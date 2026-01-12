@@ -1,13 +1,11 @@
-require "jay/cli"
-
-RSpec.describe Jay::CLI do
+RSpec.describe Jay::Cli do
   context "with no arguments" do
     let(:argument_vector) { [] }
 
     it "prints the help text" do
       expected_output = File.read("spec/fixtures/cli/help.txt")
       expect do
-        Jay::CLI.start(argument_vector)
+        Jay::Cli.start(argument_vector)
       end.to output(expected_output).to_stdout
     end
   end
@@ -18,7 +16,7 @@ RSpec.describe Jay::CLI do
     it "prints the version" do
       expected_output = Jay::VERSION + "\n"
       expect do
-        Jay::CLI.start(argument_vector)
+        Jay::Cli.start(argument_vector)
       end.to output(expected_output).to_stdout
     end
   end
