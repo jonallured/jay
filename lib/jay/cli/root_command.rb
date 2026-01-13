@@ -6,7 +6,7 @@ module Jay
         basename = `basename $(pwd)`.chomp
         leap_command = "unicornleap --seconds 1"
         say_command = "say #{basename} done -v Daniel"
-        system("#{say_command} & #{leap_command}")
+        system("#{say_command} & #{leap_command} &")
       end
 
       desc "version", "Print the version"
