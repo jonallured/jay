@@ -1,12 +1,14 @@
 # jay
 
-This project is a collection of commands that I find helpful. It's built using [thor][].
+This project is a collection of commands that I find helpful. It's built using
+[thor][].
 
 [thor]: https://github.com/rails/thor
 
 ## Installation
 
-For now I'm just installing it locally. To do that first clone the repo and then have rake install it:
+For now I'm just installing it locally. To do that first clone the repo and then
+have rake install it:
 
 ```bash
 rake install
@@ -15,7 +17,25 @@ rake install
 And that's it! Upgrading is the same.
 
 > [!NOTE]
-> This will install to the current Ruby so keep in mind that other Rubies could have an older version or no version at all.
+> This will install to the current Ruby so keep in mind that other Rubies could
+> have an older version or no version at all.
+
+## Releasing
+
+This gem is not published to RubyGems.org but I'm still tagging releases so to
+cut a new version do this:
+
+```bash
+./bin/release
+```
+
+This will:
+
+* bump the patch level version
+* make a commit
+* tag that commit
+* push the new commit
+* push the tag
 
 ## License
 
