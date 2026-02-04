@@ -1,6 +1,9 @@
 module Jay
   module Cli
     class RootCommand < Thor
+      desc "clog", "CHANGELOG commands"
+      subcommand "clog", ClogCommand
+
       desc "done", "Announce when things are done."
       def done
         basename = `basename $(pwd)`.chomp
