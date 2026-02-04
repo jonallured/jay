@@ -1,4 +1,5 @@
 Commands:
+  jay clog            # CHANGELOG commands
   jay done            # Announce when things are done.
   jay help [COMMAND]  # Describe available commands or one specific command
   jay version         # Print the version
