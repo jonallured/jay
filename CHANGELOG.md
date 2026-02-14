@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog][] and this project adheres to
 
 * Run all done commands in the background ([#8][])
 * Upgrade to Ruby 4 ([#11][])
+* Update CI matrix ([#12][])
 
 ### Deprecated
 
@@ -59,3 +60,4 @@ The format is based on [Keep a Changelog][] and this project adheres to
 [#9]: https://github.com/jonallured/jay/pull/9
 [#10]: https://github.com/jonallured/jay/pull/10
 [#11]: https://github.com/jonallured/jay/pull/11
+[#12]: https://github.com/jonallured/jay/pull/12
