@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog][] and this project adheres to
 * Add bump and release script ([#7][])
 * Add CHANGELOG commands ([#9][])
 * Add a CHANGELOG ([#10][])
+* Add remigrate command ([#13][])
 
 ### Changed
 
@@ -61,3 +62,4 @@ The format is based on [Keep a Changelog][] and this project adheres to
 [#10]: https://github.com/jonallured/jay/pull/10
 [#11]: https://github.com/jonallured/jay/pull/11
 [#12]: https://github.com/jonallured/jay/pull/12
+[#13]: https://github.com/jonallured/jay/pull/13
