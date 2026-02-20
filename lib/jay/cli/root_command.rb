@@ -12,6 +12,16 @@ module Jay
         system("#{say_command} & #{leap_command} &")
       end
 
+      desc "highlights", "List highlights for the week."
+      option :week_number, type: :numeric, required: false
+      def highlights
+        # hours worked
+        # blog posts published
+        # pudding time episodes
+        # github prs created
+        # books read
+      end
+
       desc "remigrate", "Update timestamp on migration file."
       def remigrate(starting_file)
         basename = File.basename(starting_file)
