@@ -1,9 +1,7 @@
-# jay
+# jay [![CI][badge]][actions]
 
 This project is a collection of commands that I find helpful. It's built using
 [thor][].
-
-[thor]: https://github.com/rails/thor
 
 ## Installation
 
@@ -39,4 +37,9 @@ This will:
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License][mit].
+
+[actions]: https://github.com/jonallured/jay/actions/workflows/main.yml
+[badge]: https://github.com/jonallured/jay/actions/workflows/main.yml/badge.svg
+[mit]: https://opensource.org/licenses/MIT
+[thor]: https://github.com/rails/thor
