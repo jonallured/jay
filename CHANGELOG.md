@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog][] and this project adheres to
 
 ### Changed
 
+* Upgrade to Ruby 4.0.5 ([#16][])
+
 ### Deprecated
 
 ### Removed
@@ -74,3 +76,4 @@ The format is based on [Keep a Changelog][] and this project adheres to
 [#13]: https://github.com/jonallured/jay/pull/13
 [#14]: https://github.com/jonallured/jay/pull/14
 [#15]: https://github.com/jonallured/jay/pull/15
+[#16]: https://github.com/jonallured/jay/pull/16
